@@ -12,6 +12,6 @@ Minecraft の MOD Computer Craft の Lua ソース置き場
 
 **/lib** と **/usr** のシンボリックリンクを、Minecraftマップデータ内のコンピューターのデータが保存されたディレクトリ張れば、そのままMinecraft内のコンピューターに反映される。
 
-    $ ln -s ./lib ~/Library/Application\ Support/minecraft/saves/MAPNAME/commputer/0
-    $ ln -s ./usr ~/Library/Application\ Support/minecraft/saves/MAPNAME/commputer/0
+    $ ln -s ./lib ~/Library/Application\ Support/minecraft/saves/MAPNAME/computer/0
+    $ ln -s ./usr ~/Library/Application\ Support/minecraft/saves/MAPNAME/computer/0
 
