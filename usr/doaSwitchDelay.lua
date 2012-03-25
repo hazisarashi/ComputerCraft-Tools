@@ -2,12 +2,11 @@
 
 doaSwitchDelay - my doa lock program
 
-スイッチ(swichOut)の入力があると、ドア(doaPos)に対して
-一定時間(delay)出力します。
+To delay the input from the switch on the outside
+of the house(switchOut).
 
-また、部屋内部のスイッチ(switchIn)にから入力があると、
-ドアに対する出力を即時停止します。これによって、ドアを
-開けて部屋に入った直後にドアが閉じるようになります。
+If there is input from the room (switchIn) during
+the delay, stop the output.
 
 =============================================]]--
 
@@ -16,21 +15,22 @@ doaSwitchDelay - my doa lock program
 =============================================]]--
 delay     = 5
 doaPos    = "left"
-switchOut = "back"
-switchIn  = "front"
+switchOut = "left"
+switchIn  = "bottom"
 
 
 --[[=============================================
  funcitons
 =============================================]]--
 
-function shiwinstand ()
+function switchStand ()
     n = 0
-    while n < 9 do
+    while true do
         if ( rs.getInput( switchIn ) == true ) then
             print "In"
-            rs.setOutput( doaPos , false)
-            return true
+            break
+        elseif n == ( delay * 2 ) then
+            break
         else
             sleep(0.5)
             n = n + 1
@@ -45,14 +45,15 @@ end
 =============================================]]--
 
 print ("Start doa lock program!")
+rs.setOutput( doaPos , false)
+
 while true do
-    
     if ( rs.getInput( switchOut ) == true ) then
         rs.setOutput( doaPos , true)
         print ("Wellcome!")
-        shiwinstand()
-        sleep( delay )
+        switchStand()
         rs.setOutput( doaPos , false)
+        sleep(0.5)
     else
        sleep(0.5)
     end
