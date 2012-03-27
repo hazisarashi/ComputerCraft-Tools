@@ -1,6 +1,9 @@
+interval = 0.5
+out = "front"
+
 while true do
-  rs.setOutput("front",true)
-  sleep(0.5)
-  rs.setOutput("front",false)
-  sleep(0.5)
+rs.setOutput( (out),true)
+sleep(interval)
+rs.setOutput( (out),false)
+sleep(interval)
 end
